@@ -1,3 +1,5 @@
+let mapleader="\<SPACE>"
+
 set undofile
 set encoding=utf-8
 set nocompatible
@@ -33,15 +35,16 @@ vnoremap > >gv
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
 
-autocmd BufEnter * lcd %:p:h
-
 call plug#begin()
 
-" GUI enhancements
 " Plug 'w0rp/ale'
+Plug 'mhinz/vim-startify'
+
+" GUI enhancements
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 Plug 'mkitt/tabline.vim'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -53,10 +56,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
 " Themes
-Plug 'hzchirs/vim-material'
+" Plug 'hzchirs/vim-material'
 Plug 'mhartington/oceanic-next'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'skbolton/embark'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'kaicataldo/material.vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -83,6 +90,7 @@ Plug 'bkad/camelcasemotion'
 call plug#end()
 
 colorscheme OceanicNext
+" colorscheme challenger_deep
 
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
@@ -256,7 +264,7 @@ noremap si :set splitright<CR>:vsplit<CR>
 noremap tu :tabe<CR>
 
 " Move around tabs with tn and ti
-noremap <leader>q :tabprevious<CR>
+noremap <leader>w :tabprevious<CR>
 noremap <leader>e :tabnext<CR>
 
 noremap <leader>r :Ranger<CR>
