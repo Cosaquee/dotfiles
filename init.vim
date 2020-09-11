@@ -83,9 +83,11 @@ Plug 'gcmt/taboo.vim'
 " File explorer
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'psliwka/vim-smoothie'
 Plug 'bkad/camelcasemotion'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -237,7 +239,7 @@ nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
 nnoremap <leader>m        :History<CR>
 
 " Clap
-nnoremap <leader><leader> :Clap files<CR>
+nnoremap <leader><leader> :FZF<CR>
 
 " open new split panes to right and below
 set splitright
@@ -274,7 +276,15 @@ map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> ge <Plug>CamelCaseMotion_ge
+
 sunmap w
 sunmap b
 sunmap e
 sunmap ge
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
