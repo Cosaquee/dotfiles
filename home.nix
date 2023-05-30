@@ -15,9 +15,7 @@
   # release notes.
   home.stateVersion = "22.11"; # Please read the comment before changing.
 
-  imports = [
-    ./nvim
-  ];
+  imports = [ ./nvim ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -52,6 +50,7 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.tree
+    pkgs.nixfmt
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -87,19 +86,15 @@
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
-    programs.zsh = {
-	shellAliases = {
-          g = "lazygit";
-          gs = "git status";
+  programs.zsh = {
+    shellAliases = {
+      g = "lazygit";
+      gs = "git status";
     };
-      oh-my-zsh = {
-        enable = true;
-	theme = "simple";
-        plugins = [
-		"terraform"
-		"kubectl"
-		"fzf"
-        ];
-      };
+    oh-my-zsh = {
+      enable = true;
+      theme = "simple";
+      plugins = [ "terraform" "kubectl" "fzf" ];
     };
+  };
 }
