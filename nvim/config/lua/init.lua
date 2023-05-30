@@ -1,0 +1,5 @@
+require('settings')
+require('nvim-tree-config')
+require('legendary-config')
+require('telescope-config')
+require('treesitter-config')
