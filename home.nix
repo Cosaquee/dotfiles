@@ -22,7 +22,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.awscli
+    pkgs.awscli2
     pkgs.fzf
     pkgs.bat
     pkgs.ack
@@ -40,6 +40,10 @@
     pkgs.direnv
     pkgs.eksctl
     pkgs.aws-vault
+    pkgs.git-lfs
+    pkgs.lsd
+    pkgs.detect-secrets
+    pkgs.pre-commit
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -86,5 +90,47 @@
       theme = "simple";
       plugins = [ "terraform" "kubectl" "fzf" ];
     };
+    };
+
+  programs.vscode = {
+    enable = true;
+
+    userSettings = {
+      "editor.minimap.enabled" = false;
+      "editor.linkedEditing" = true;
+      "editor.formatOnSave" = true;
+
+      # font
+      "editor.fontSize" = 14;
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "Monolisa";
+      "terminal.integrated.fontFamily" = "Monolisa";
+
+      # smooth
+      "editor.cursorBlinking" = "phase";
+      "editor.cursorSmoothCaretAnimation" = "on";
+      "editor.smoothScrolling" = true;
+
+      # bracket
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = "active";
+
+      # tree indent
+      "workbench.tree.indent" = 15;
+
+      "window.menuBarVisibility" = "toggle";
+      "window.titleBarStyle" = "custom";
+
+      "workbench.colorTheme" = "Nord";
+      "workbench.iconTheme" = "vs-minimal";
+      };
+
+      extensions = with pkgs.vscode-extensions; [
+        pkief.material-product-icons
+        pkief.material-icon-theme
+        arcticicestudio.nord-visual-studio-code
+        hashicorp.terraform
+        vscodevim.vim
+    ];
   };
 }
