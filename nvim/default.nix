@@ -82,8 +82,6 @@ with lib;
         beam.packages.erlang.elixir-ls
         # Erlang
         beam.packages.erlang.erlang-ls
-        # Java
-        java-language-server
         # Kotlin
         kotlin-language-server
         # Lua
