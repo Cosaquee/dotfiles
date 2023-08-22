@@ -44,6 +44,17 @@
     pkgs.lsd
     pkgs.detect-secrets
     pkgs.pre-commit
+    pkgs.jq
+    pkgs.discord
+    pkgs.k9s
+    pkgs.kubernetes-helm
+    pkgs.ghorg
+    pkgs.terraform
+    pkgs.cw
+    pkgs.terraform-docs
+    pkgs.kustomize
+    pkgs.minikube
+    pkgs.yq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -90,13 +101,17 @@
       theme = "simple";
       plugins = [ "terraform" "kubectl" "fzf" ];
     };
-    };
+  };
+
+  programs.zsh.initExtra = "if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi";
 
   programs.vscode = {
     enable = true;
 
     userSettings = {
-      "editor.minimap.enabled" = false;
+      "editor.minimap.enabled" = true;
       "editor.linkedEditing" = true;
       "editor.formatOnSave" = true;
 
@@ -122,15 +137,17 @@
       "window.titleBarStyle" = "custom";
 
       "workbench.colorTheme" = "Nord";
-      "workbench.iconTheme" = "vs-minimal";
+      "workbench.iconTheme" = "vs-seti";
       };
 
       extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
         pkief.material-product-icons
         pkief.material-icon-theme
         arcticicestudio.nord-visual-studio-code
         hashicorp.terraform
-        vscodevim.vim
+        github.copilot
+        ms-python.python
     ];
   };
 }
