@@ -68,6 +68,8 @@ with lib;
         nord-nvim
 
         copilot-vim
+        toggleterm-nvim
+        vimagit
       ];
 
       extraPackages = with pkgs; [
@@ -106,7 +108,7 @@ with lib;
         let g:elixir_ls_home = "${pkgs.beam.packages.erlang.elixir-ls}"
         :luafile ~/.config/nvim/lua/init.lua
 
-        set tabstop=4 "4 char-wide tab
+        set tabstop=2 "4 char-wide tab
         set expandtab "Use spaces
         set softtabstop=0 "Use same length as 'tabstop'
         set shiftwidth=0 "Use same length as 'tabstop'

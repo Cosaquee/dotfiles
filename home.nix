@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-vscode-extensions, ... }:
 
 {
   home.username = "karolkozakowski";
@@ -22,39 +22,47 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.awscli2
-    pkgs.fzf
-    pkgs.bat
     pkgs.ack
-    pkgs.exa
-    pkgs.lazygit
-    pkgs.sops
     pkgs.aws-vault
-    pkgs.openssh
-    pkgs.yarn
+    pkgs.aws-vault
+    pkgs.awscli2
+    pkgs.bat
+    pkgs.cw
+    pkgs.detect-secrets
+    pkgs.diff-so-fancy
+    pkgs.direnv
+    pkgs.discord
     pkgs.docker
     pkgs.docker-compose
-    pkgs.tree
-    pkgs.nixfmt
-    pkgs.slack
-    pkgs.direnv
     pkgs.eksctl
-    pkgs.aws-vault
-    pkgs.git-lfs
-    pkgs.lsd
-    pkgs.detect-secrets
-    pkgs.pre-commit
-    pkgs.jq
-    pkgs.discord
-    pkgs.k9s
-    pkgs.kubernetes-helm
+    pkgs.exa
+    pkgs.fzf
     pkgs.ghorg
-    pkgs.terraform
-    pkgs.cw
-    pkgs.terraform-docs
+    pkgs.git-lfs
+    pkgs.gitleaks
+    pkgs.jq
+    pkgs.k9s
+    pkgs.kubectx
+    pkgs.kubernetes-helm
     pkgs.kustomize
+    pkgs.lazygit
+    pkgs.lsd
     pkgs.minikube
+    pkgs.nixfmt
+    pkgs.nodejs_20
+    pkgs.openssh
+    pkgs.pre-commit
+    pkgs.slack
+    pkgs.sops
+    pkgs.terraform
+    pkgs.terraform-docs
+    pkgs.terraform-ls
+    pkgs.tflint
+    pkgs.tree
+    pkgs.yarn
     pkgs.yq
+    pkgs.zellij
+    pkgs.zoxide
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -103,6 +111,28 @@
     };
   };
 
+  programs.zoxide.enable = true;
+
+  programs.starship.enable = true;
+
+  programs.starship.settings = {
+    # See docs here: https://starship.rs/config/
+    # Symbols config configured ./starship-symbols.nix.
+
+    directory.fish_style_pwd_dir_length = 0; # turn on fish directory truncation
+    gcloud.disabled = true; # annoying to always have on
+    add_newline = false;
+
+    aws = {
+      format = "[$symbol($profile )(($region) )([$duration] )]($style)";
+      symbol = "🅰 ";
+      style = "bold yellow";
+      disabled = false;
+      expiration_symbol = "X";
+      force_display = false;
+    };
+  };
+
   programs.zsh.initExtra = "if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi";
@@ -138,16 +168,17 @@ fi";
 
       "workbench.colorTheme" = "Nord";
       "workbench.iconTheme" = "vs-seti";
-      };
+    };
 
-      extensions = with pkgs.vscode-extensions; [
-        vscodevim.vim
-        pkief.material-product-icons
-        pkief.material-icon-theme
-        arcticicestudio.nord-visual-studio-code
-        hashicorp.terraform
-        github.copilot
-        ms-python.python
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      pkief.material-product-icons
+      pkief.material-icon-theme
+      arcticicestudio.nord-visual-studio-code
+      hashicorp.terraform
+      github.copilot
+      ms-python.python
+      roman.ayu-next
     ];
   };
 }
