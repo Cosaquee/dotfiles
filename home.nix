@@ -4,7 +4,7 @@
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
 
-  home.stateVersion = "22.11"; # Please read the comment before changing.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [ ./nvim ];
 
@@ -32,11 +32,13 @@
     pkgs.diff-so-fancy
     pkgs.direnv
     pkgs.discord
+    pkgs.d2
     pkgs.docker
     pkgs.docker-compose
     pkgs.eksctl
     pkgs.exa
     pkgs.fzf
+    pkgs.go
     pkgs.ghorg
     pkgs.git-lfs
     pkgs.gitleaks
@@ -49,7 +51,7 @@
     pkgs.lsd
     pkgs.minikube
     pkgs.nixfmt
-    pkgs.nodejs_20
+    pkgs.nodejs_18
     pkgs.openssh
     pkgs.pre-commit
     pkgs.slack
@@ -63,6 +65,8 @@
     pkgs.yq
     pkgs.zellij
     pkgs.zoxide
+    pkgs.gh
+    pkgs.vscode
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -102,7 +106,7 @@
     shellAliases = {
       g = "lazygit";
       gs = "git status";
-      code = "cd /Volumes/Code";
+      c = "cd /Volumes/Code";
     };
     oh-my-zsh = {
       enable = true;
@@ -171,14 +175,15 @@ fi";
     };
 
     extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      pkief.material-product-icons
-      pkief.material-icon-theme
       arcticicestudio.nord-visual-studio-code
-      hashicorp.terraform
       github.copilot
+      golang.go
+      hashicorp.terraform
       ms-python.python
+      pkief.material-icon-theme
+      pkief.material-product-icons
       roman.ayu-next
+      vscodevim.vim
     ];
   };
 }

@@ -66,10 +66,15 @@ with lib;
 
         # theming
         nord-nvim
+        tokyonight-nvim
 
         copilot-vim
         toggleterm-nvim
         vimagit
+
+        lsp_lines-nvim
+        mason-nvim
+        mason-lspconfig-nvim
       ];
 
       extraPackages = with pkgs; [
@@ -95,6 +100,7 @@ with lib;
         # Python
         pyright
         black
+
         # Typescript
         nodePackages.typescript-language-server
         # Web (ESLint, HTML, CSS, JSON)
