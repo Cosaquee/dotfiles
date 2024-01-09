@@ -33,14 +33,17 @@ with lib;
         vim-smoothie
         numb-nvim
         leap-nvim
-        nvim-ts-rainbow
         nvim-notify
         comment-nvim
 
         nvim-treesitter.withAllGrammars
 
+        # LSP
+        mason-nvim
+        mason-lspconfig-nvim
         nvim-lspconfig
         nvim-lsp-ts-utils
+
         null-ls-nvim
         fidget-nvim
         nvim-lightbulb
@@ -73,9 +76,7 @@ with lib;
         vimagit
 
         lsp_lines-nvim
-        mason-nvim
-        mason-lspconfig-nvim
-      ];
+       ];
 
       extraPackages = with pkgs; [
         tree-sitter
