@@ -4,7 +4,7 @@
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
 
   imports = [ ./nvim ];
 
@@ -24,7 +24,6 @@
 
     pkgs.ack
     pkgs.aws-vault
-    pkgs.aws-vault
     pkgs.awscli2
     pkgs.bat
     pkgs.cw
@@ -36,7 +35,7 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.eksctl
-    pkgs.exa
+    pkgs.eza
     pkgs.fzf
     pkgs.go
     pkgs.ghorg
@@ -67,6 +66,7 @@
     pkgs.zoxide
     pkgs.gh
     pkgs.vscode
+    pkgs.yaml-language-server
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
