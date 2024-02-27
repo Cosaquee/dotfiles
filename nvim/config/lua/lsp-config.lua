@@ -3,8 +3,27 @@ local lspconfig = require('lspconfig')
 
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {}
-lspconfig.yamlls.setup {}
+
+lspconfig.rust_analyzer.setup {
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
+lspconfig.yamlls.setup {
+  settings = {
+    yaml = {
+      format = {
+        enable = true,
+      },
+      validate = true,
+      schemas = {
+        ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = 'docker-compose.yml',
+      },
+    },
+  },
+}
 
 
 -- Global mappings.

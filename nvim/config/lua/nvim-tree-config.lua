@@ -19,16 +19,24 @@ require'nvim-tree'.setup {
             error = "",
         }
     },
+
     update_focused_file = {
         enable      = false,
         update_cwd  = false,
         ignore_list = {}
     },
+
     system_open = {
-    cmd  = nil,
-    args = {}
+      cmd  = nil,
+      args = {}
     },
    actions = {
+
+    git = {
+      enable = true
+    },
+
+    actions = {
         open_file = {
             resize_window = true
         }
@@ -36,7 +44,7 @@ require'nvim-tree'.setup {
 }
 
 require('legendary').keymaps({
-    { '<leader>tt', ':NvimTreeToggle<cr>', opts = { silent = true }, description = 'Nvim Tree: Toggle' },
+    { '<leader>t', ':NvimTreeToggle<cr>', opts = { silent = true }, description = 'Nvim Tree: Toggle' },
     { '<leader>tr', ':NvimTreeRefresh<cr>', opts = { silent = true }, description = 'Nvim Tree: Refresh' },
-    { '<leader>tf', ':NvimTreeFindFile<cr>', opts = { silent = true }, description = 'Nvim Tree: Find file' }
+    { '<leader>tf', ':NvimTreeFocus<cr>', opts = { silent = true }, description = 'Nvim Tree: Focus' }
 })

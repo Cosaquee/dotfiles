@@ -50,6 +50,8 @@ with lib;
         vimagit
 
         lsp_lines-nvim
+
+        vim-floaterm
        ];
 
       extraPackages = with pkgs; [

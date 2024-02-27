@@ -6,7 +6,9 @@
 
   home.stateVersion = "24.05";
 
-  imports = [ ./nvim ];
+  imports = [
+    ./nvim
+  ];
 
   home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -108,6 +110,7 @@
       g = "lazygit";
       gs = "git status";
       c = "cd /Volumes/Code";
+      ru = "cd $(git rev-parse --show-toplevel)";
     };
     oh-my-zsh = {
       enable = true;
@@ -136,6 +139,10 @@
       expiration_symbol = "X";
       force_display = false;
     };
+    };
+
+  programs.atuin = {
+    enable = true;
   };
 
   programs.zsh.initExtra = "if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
@@ -144,6 +151,7 @@ fi";
 
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = true;
 
     userSettings = {
       "editor.minimap.enabled" = true;
@@ -165,14 +173,52 @@ fi";
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
 
+      "json.format.keepLines" = true;
+
+      "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
+      "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
+
       # tree indent
-      "workbench.tree.indent" = 15;
+      # "workbench.tree.indent" = 15;
 
-      "window.menuBarVisibility" = "toggle";
-      "window.titleBarStyle" = "custom";
+      window.menuBarVisibility = "toggle";
+      window.titleBarStyle = "custom";
 
-      "workbench.colorTheme" = "Nord";
-      "workbench.iconTheme" = "vs-seti";
+      workbench.colorTheme = "Nord";
+      workbench.iconTheme = "vs-seti";
+
+      inlineSuggest.enabled = true;
+
+      files = {
+        eol = "\n";
+        insertFinalNewline = true;
+        trimTrailingWhitespace = true;
+        };
+
+      github.copilot.enable."*" = true;
+      security.workspace.trust.enabled = false;
+
+      keybindings = [
+        {
+            key =  "cmd+0";
+            command = "workbench.action.lastEditorInGroup";
+        }
+        {
+            key = "cmd+1";
+            command = "workbench.action.openEditorAtIndex1";
+        }
+        {
+            key =  "cmd+2";
+            command = "workbench.action.openEditorAtIndex2";
+        }
+        ];
+
+        "[javascript]" = {
+          "editor.formatOnType"  = true;
+          "editor.formatOnPaste" = true;
+          "editor.formatOnSave"  = true;
+          "editor.insertSpaces"  = false;
+        };
     };
 
     extensions = with pkgs.vscode-extensions; [
