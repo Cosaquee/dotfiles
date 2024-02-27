@@ -11,11 +11,7 @@ with lib;
       plugins = with pkgs.vimPlugins; [
         vim-sensible
 
-        vim-elixir
         vim-nix
-        kotlin-vim
-        dart-vim-plugin
-        vim-flutter
 
         nvim-web-devicons
         nvim-tree-lua
@@ -28,38 +24,16 @@ with lib;
         telescope-nvim
         trouble-nvim
         legendary-nvim
-        dressing-nvim
-        bufferline-nvim
-        vim-smoothie
-        numb-nvim
-        leap-nvim
-        nvim-notify
-        comment-nvim
 
         nvim-treesitter.withAllGrammars
 
         # LSP
         mason-nvim
         mason-lspconfig-nvim
+
         nvim-lspconfig
         nvim-lsp-ts-utils
 
-        null-ls-nvim
-        fidget-nvim
-        nvim-lightbulb
-        vim-illuminate
-
-        cmp-nvim-lsp
-        cmp-buffer
-        cmp-path
-        cmp-cmdline
-        cmp-nvim-lsp-signature-help
-        nvim-cmp
-        lspkind-nvim
-
-        # Snippets
-        luasnip
-        cmp_luasnip
 
         # Debug adapter protocol
         nvim-dap
@@ -84,14 +58,6 @@ with lib;
         # Language Servers
         # Bash
         nodePackages.bash-language-server
-        # Dart
-        dart
-        # Elixir
-        beam.packages.erlang.elixir-ls
-        # Erlang
-        beam.packages.erlang.erlang-ls
-        # Kotlin
-        kotlin-language-server
         # Lua
         lua-language-server
         # Nix
