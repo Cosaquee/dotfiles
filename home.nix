@@ -8,7 +8,7 @@
 
   imports = [ ./nvim ];
 
-  home.packages = [
+  home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -22,51 +22,52 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.ack
-    pkgs.aws-vault
-    pkgs.awscli2
-    pkgs.bat
-    pkgs.cw
-    pkgs.detect-secrets
-    pkgs.diff-so-fancy
-    pkgs.direnv
-    pkgs.discord
-    pkgs.d2
-    pkgs.docker
-    pkgs.docker-compose
-    pkgs.eksctl
-    pkgs.eza
-    pkgs.fzf
-    pkgs.go
-    pkgs.ghorg
-    pkgs.git-lfs
-    pkgs.gitleaks
-    pkgs.jq
-    pkgs.k9s
-    pkgs.kubectx
-    pkgs.kubernetes-helm
-    pkgs.kustomize
-    pkgs.lazygit
-    pkgs.lsd
-    pkgs.minikube
-    pkgs.nixfmt
-    pkgs.nodejs_18
-    pkgs.openssh
-    pkgs.pre-commit
-    pkgs.slack
-    pkgs.sops
-    pkgs.terraform
-    pkgs.terraform-docs
-    pkgs.terraform-ls
-    pkgs.tflint
-    pkgs.tree
-    pkgs.yarn
-    pkgs.yq
-    pkgs.zellij
-    pkgs.zoxide
-    pkgs.gh
-    pkgs.vscode
-    pkgs.yaml-language-server
+    ack
+    aws-vault
+    awscli2
+    bat
+    cw
+    detect-secrets
+    diff-so-fancy
+    direnv
+    discord
+    d2
+    docker
+    docker-compose
+    eksctl
+    eza
+    fzf
+    go
+    ghorg
+    git-lfs
+    gitleaks
+    jq
+    k9s
+    kubectx
+    kubernetes-helm
+    kustomize
+    lazygit
+    lsd
+    minikube
+    nixfmt
+    nodejs_18
+    openssh
+    pre-commit
+    slack
+    sops
+    terraform
+    terraform-docs
+    terraform-ls
+    tflint
+    tree
+    yarn
+    yq
+    zellij
+    zoxide
+    gh
+    vscode
+    yaml-language-server
+    httpie
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

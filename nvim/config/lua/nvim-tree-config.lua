@@ -28,15 +28,7 @@ require'nvim-tree'.setup {
     cmd  = nil,
     args = {}
     },
-    view = {
-        width = 25,
-        side = 'left',
-        mappings = {
-            custom_only = false,
-            list = {}
-        }
-    },
-    actions = {
+   actions = {
         open_file = {
             resize_window = true
         }
