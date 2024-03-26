@@ -70,6 +70,8 @@
     vscode
     yaml-language-server
     httpie
+    python310
+    warp-terminal
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -116,7 +118,8 @@
       enable = true;
       theme = "simple";
       plugins = [ "terraform" "kubectl" "fzf" ];
-    };
+      };
+  
   };
 
   programs.zoxide.enable = true;
@@ -145,9 +148,14 @@
     enable = true;
   };
 
-  programs.zsh.initExtra = "if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi";
+  programs.zsh.initExtra = ''
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+
+    PATH=/Users/karolkozakowski/.local/bin:$PATH
+
+  '';
 
   programs.vscode = {
     enable = true;
@@ -177,6 +185,11 @@ fi";
 
       "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
       "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
+
+      "[json]" = {
+        "editor.insertSpaces" = false;
+        "editor.tabSize" = 2;
+      };
 
       # tree indent
       # "workbench.tree.indent" = 15;
