@@ -30,7 +30,6 @@ require'nvim-tree'.setup {
       cmd  = nil,
       args = {}
     },
-   actions = {
 
     git = {
       enable = true

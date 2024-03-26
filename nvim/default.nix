@@ -52,6 +52,7 @@ with lib;
         lsp_lines-nvim
 
         vim-floaterm
+        sort-nvim
        ];
 
       extraPackages = with pkgs; [
