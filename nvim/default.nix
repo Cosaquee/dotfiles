@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 with lib;
 {
-  config =  {
+  config = {
     programs.neovim = {
       enable = true;
       viAlias = true;
@@ -53,7 +53,7 @@ with lib;
 
         vim-floaterm
         sort-nvim
-       ];
+      ];
 
       extraPackages = with pkgs; [
         tree-sitter
