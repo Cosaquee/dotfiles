@@ -99,6 +99,7 @@
       gs = "git status";
       c = "cd /Volumes/Code";
       ru = "cd $(git rev-parse --show-toplevel)";
+      gc = "git checkout - ";
     };
     oh-my-zsh = {
       enable = true;
