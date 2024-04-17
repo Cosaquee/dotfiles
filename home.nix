@@ -9,6 +9,7 @@
     # '')
 
     ack
+    asdf-vm
     aws-vault
     awscli2
     bat
@@ -36,7 +37,6 @@
     lsd
     minikube
     nixfmt
-    nodejs_18
     openssh
     pre-commit
     slack
@@ -58,6 +58,10 @@
     zoom-us
     # Currently pretty old version
     # warp-terminal
+
+    nodejs_20
+    yarn
+    moon
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -117,7 +121,12 @@
         };
       }
     ];
-  };
+    };
+
+    programs =  {
+      bat.enable = true;
+      exa.enable = true;
+    };
 
   programs.zoxide.enable = true;
 
@@ -217,6 +226,8 @@
       pkief.material-product-icons
       roman.ayu-next
       vscodevim.vim
+      tamasfe.even-better-toml
+      prisma.prisma
     ];
   };
 }
