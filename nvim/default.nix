@@ -63,8 +63,6 @@ with lib;
         nodePackages.bash-language-server
         # Lua
         lua-language-server
-        # Nix
-        rnix-lsp
         nixpkgs-fmt
         statix
         # Python
