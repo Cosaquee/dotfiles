@@ -62,6 +62,7 @@
     nodejs_20
     yarn
     moon
+    yubico-piv-tool
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -104,6 +105,7 @@
       c = "cd /Volumes/Code";
       ru = "cd $(git rev-parse --show-toplevel)";
       gc = "git checkout - ";
+      gp = "git pull";
     };
     oh-my-zsh = {
       enable = true;
