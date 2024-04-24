@@ -184,6 +184,15 @@
       workbench.colorTheme = "Nord";
       workbench.iconTheme = "vs-seti";
 
+
+      "explorer.confirmDelete" = false;
+      "explorer.confirmDragAndDrop" = false;
+
+      "files.autoSave" = "onFocusChange";
+      "files.exclude"."**/.git" = true;
+      "files.insertFinalNewline" = true;
+      "files.trimTrailingWhitespace" = true;
+
       inlineSuggest.enabled = true;
 
       files = {
