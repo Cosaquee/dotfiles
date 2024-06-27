@@ -72,6 +72,8 @@
     legitify
     alacritty
 
+    kubecm
+
     syft
   ];
 
