@@ -79,7 +79,6 @@ with lib;
       ];
 
       extraConfig = ''
-        let g:elixir_ls_home = "${pkgs.beam.packages.erlang.elixir-ls}"
         :luafile ~/.config/nvim/lua/init.lua
 
         set tabstop=2 "4 char-wide tab

@@ -62,7 +62,17 @@
     nodejs_20
     yarn
     moon
+
+
+    gnupg1
+    pinentry_mac
     yubico-piv-tool
+
+    steampipe
+    legitify
+    alacritty
+
+    syft
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -128,7 +138,22 @@
     programs =  {
       bat.enable = true;
       exa.enable = true;
+      };
+
+
+  programs.alacritty = {
+    enable = true;
+
+    settings = {
+      font = {
+        size = 16.0;
+        normal = {
+          family = "Berkeley Mono";
+        };
+      };
     };
+  };
+
 
   programs.zoxide.enable = true;
 
@@ -138,6 +163,11 @@
     fi
 
     PATH=/Users/karolkozakowski/.local/bin:$PATH
+
+    GPG_TTY=$(tty)
+    export GPG_TTY
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
 
   '';
 
@@ -154,7 +184,7 @@
       "editor.fontSize" = 14;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Monolisa";
-      "terminal.integrated.fontFamily" = "Monolisa";
+      "terminal.integrated.fontFamily" = "BerkleyMono";
 
       # smooth
       "editor.cursorBlinking" = "phase";
