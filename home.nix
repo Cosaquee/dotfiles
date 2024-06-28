@@ -37,6 +37,7 @@
     lsd
     minikube
     nixfmt
+    nodejs_20
     openssh
     pre-commit
     slack
@@ -54,7 +55,7 @@
     vscode
     yaml-language-server
     httpie
-    python310
+    python311
     zoom-us
     # Currently pretty old version
     # warp-terminal
@@ -62,7 +63,6 @@
     nodejs_20
     yarn
     moon
-
 
     gnupg1
     pinentry_mac
@@ -75,6 +75,12 @@
     kubecm
 
     syft
+    # Node
+    nodePackages.typescript
+    moon
+
+    ruby
+    rubyPackages.rails
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -225,6 +231,14 @@
       "files.insertFinalNewline" = true;
       "files.trimTrailingWhitespace" = true;
 
+      "[typescriptreact]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+
+      "[typescript]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+
       inlineSuggest.enabled = true;
 
       files = {
@@ -273,4 +287,5 @@
       prisma.prisma
     ];
   };
+
 }
