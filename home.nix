@@ -70,7 +70,9 @@
 
     steampipe
     legitify
+
     alacritty
+    alacritty-theme
 
     kubecm
 

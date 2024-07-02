@@ -25,6 +25,8 @@ with lib;
         trouble-nvim
         legendary-nvim
 
+        git-blame-nvim
+
         nvim-treesitter.withAllGrammars
 
         # LSP
