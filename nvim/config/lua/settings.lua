@@ -24,7 +24,7 @@ vim.cmd("syntax enable")
 opt.background="dark"
 g.nord_italic = false
 
-vim.cmd[[colorscheme nord]]
+vim.cmd[[colorscheme tokyonight-storm]]
 
 -- Movement keybinds
 local opts = { noremap = true }
