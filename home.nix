@@ -77,12 +77,15 @@
     kubecm
 
     syft
-    # Node
     nodePackages.typescript
     moon
 
     ruby
     rubyPackages.rails
+
+    shellcheck
+
+    alacritty
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -132,24 +135,21 @@
       theme = "simple";
       plugins = [ "terraform" "kubectl" "fzf" ];
     };
-    plugins = [
-      {
-        name = "zsh-kubectl-prompt";
-        src = pkgs.fetchFromGitHub {
-          owner = "superbrothers";
-          repo = "zsh-kubectl-prompt";
-          rev = "v1.1.0";
-          sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
-        };
-      }
-    ];
-    };
-
-    programs =  {
-      bat.enable = true;
-      exa.enable = true;
+    plugins = [{
+      name = "zsh-kubectl-prompt";
+      src = pkgs.fetchFromGitHub {
+        owner = "superbrothers";
+        repo = "zsh-kubectl-prompt";
+        rev = "v1.1.0";
+        sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
       };
+    }];
+  };
 
+  programs = {
+    bat.enable = true;
+    exa.enable = true;
+  };
 
   programs.alacritty = {
     enable = true;
@@ -157,13 +157,38 @@
     settings = {
       font = {
         size = 16.0;
+        normal = { family = "Berkeley Mono"; };
+      };
+      colors = rec {
+        primary = {
+          background = "#24283b";
+          foreground = "#c0caf5";
+        };
+
         normal = {
-          family = "Berkeley Mono";
+          black = "#1d202f";
+          red = "#f7768e";
+          green = "#9ece6a";
+          yellow = "#e0af68";
+          blue = "#7aa2f7";
+          magenta = "#bb9af7";
+          cyan = "#7dcfff";
+          white = "#a9b1d6";
+        };
+
+        bright = {
+          black = "#414868";
+          red = "#f7768e";
+          green = "#9ece6a";
+          yellow = "#e0af68";
+          blue = "#7aa2f7";
+          magenta = "#bb9af7";
+          cyan = "#7dcfff";
+          white = "#c0caf5";
         };
       };
     };
   };
-
 
   programs.zoxide.enable = true;
 
@@ -207,8 +232,10 @@
 
       "json.format.keepLines" = true;
 
-      "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
-      "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
+      "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" =
+        false;
+      "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" =
+        false;
 
       "[json]" = {
         "editor.insertSpaces" = false;
@@ -223,7 +250,6 @@
 
       workbench.colorTheme = "Nord";
       workbench.iconTheme = "vs-seti";
-
 
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
