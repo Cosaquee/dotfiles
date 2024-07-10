@@ -3,5 +3,5 @@ require('gitblame').setup {
 }
 
 require('legendary').keymaps({
-  { '<Leader>g', ':GitBlameToggle<CR>', opts = { silent = true }, description = "Toggle Git Blame" },
+  { '<Leader>l', ':GitBlameToggle<CR>', opts = { silent = true }, description = "Toggle Git Blame" },
 })
