@@ -1,7 +1,5 @@
 require('legendary').setup({
-    -- Include builtins by default, set to false to disable
-    include_builtin = true,
-    -- Customize the prompt that appears on your vim.ui.select() handler
+    include_builtin = false,
     select_prompt = 'Legendary'
 })
 
