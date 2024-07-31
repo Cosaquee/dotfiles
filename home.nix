@@ -4,10 +4,6 @@
   home.stateVersion = "24.05";
   imports = [ ./nvim ];
   home.packages = with pkgs; [
-    # # It is sometimes useful to fine-tune packages, for example, by applying # overrides. You can do that directly here, just don't forget the # parentheses. Maybe you want to install Nerd Fonts with a limited number of # fonts? (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; }) # You can also create simple shell scripts directly inside your # configuration. For example, this adds a command 'my-hello' to your # environment: (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-
     ack
     asdf-vm
     aws-vault
@@ -37,17 +33,17 @@
     lsd
     minikube
     nixfmt
-    nodejs_20
     openssh
     pre-commit
     slack
     sops
-    terraform
+
+    #terraform
     terraform-docs
     terraform-ls
     tflint
+
     tree
-    yarn
     yq
     zellij
     zoxide
@@ -55,7 +51,9 @@
     vscode
     yaml-language-server
     httpie
-    python311
+
+    python310Full
+
     zoom-us
     # Currently pretty old version
     # warp-terminal
@@ -87,9 +85,11 @@
 
     alacritty
 
-    terragrunt
-
     opam
+
+    tenv
+    terragrunt
+    driftctl
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -121,7 +121,6 @@
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
@@ -162,7 +161,8 @@
       font = {
         size = 16.0;
         normal = { family = "Berkeley Mono"; };
-      };
+        };
+
       colors = rec {
         primary = {
           background = "#24283b";
@@ -203,11 +203,8 @@
 
     PATH=/Users/karolkozakowski/.local/bin:$PATH
 
-    GPG_TTY=$(tty)
-    export GPG_TTY
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
   '';
 
   programs.vscode = {
