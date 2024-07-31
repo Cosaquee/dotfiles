@@ -56,6 +56,7 @@ with lib;
         vim-floaterm
         sort-nvim
         trouble-nvim
+        barbar-nvim
       ];
 
       extraPackages = with pkgs; [
