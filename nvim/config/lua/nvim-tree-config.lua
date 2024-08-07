@@ -9,7 +9,7 @@ require'nvim-tree'.setup {
 
     open_on_tab         = false,
     hijack_cursor       = false,
-    update_cwd          = false,
+    update_cwd          = true,
     diagnostics         = {
         enable = true,
         icons = {
@@ -21,8 +21,8 @@ require'nvim-tree'.setup {
     },
 
     update_focused_file = {
-        enable      = false,
-        update_cwd  = false,
+        enable      = true,
+        update_cwd  = true,
         ignore_list = {}
     },
 
