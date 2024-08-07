@@ -33,6 +33,15 @@ lspconfig.yamlls.setup {
   },
 }
 
+lspconfig.helm_ls.setup {
+  settings = {
+    ['helm-ls'] = {
+      yamlls = {
+        path = "yaml-language-server",
+      }
+    }
+  }
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
