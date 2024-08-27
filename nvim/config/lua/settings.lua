@@ -25,12 +25,3 @@ opt.background="dark"
 g.nord_italic = false
 
 vim.cmd[[colorscheme tokyonight-storm]]
-
--- Movement keybinds
-local opts = { noremap = true }
-require('legendary').keymaps({
-    { '<C-h>', '<C-w>h', description = 'Panes: Move left', opts = opts },
-    { '<C-j>', '<C-w>j', description = 'Panes: Move down', opts = opts },
-    { '<C-k>', '<C-w>k', description = 'Panes: Move up', opts = opts },
-    { '<C-l>', '<C-w>l', description = 'Panes: Move right', opts = opts }
-})

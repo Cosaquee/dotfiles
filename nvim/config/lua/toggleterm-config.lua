@@ -3,27 +3,40 @@ require('toggleterm').setup()
 local Terminal = require('toggleterm.terminal').Terminal
 local float_term = Terminal:new({ direction = 'float', hidden = true })
 
-local legendary = require('legendary')
-legendary.keymaps({
-  {
-    '<C-Enter>',
-    function()
-      float_term:toggle()
-    end,
-    mode = { 'n', 't' },
-    description = 'Toggle float terminal',
-  },
-  {
-    '<C-S-Enter>',
-    function()
-      Terminal:new({ direction = 'horizontal' }):open()
-    end,
-    mode = { 'n', 't' },
-    description = 'Create a new terminal',
-  },
+local keymap = vim.keymap
+
+-- Toggle float terminal
+keymap.set({ 'n', 't' }, '<C-Enter>', function()
+  if float_term then
+    float_term:toggle()
+  else
+    -- Assuming `float_term` is defined somewhere in your config
+    vim.notify("float_term is not defined", vim.log.levels.ERROR)
+  end
+end, {
+  desc = 'Toggle float terminal',
 })
 
-legendary.autocmds({
-  { 'TermOpen', 'setlocal signcolumn=no statuscolumn=', opts = { pattern = 'term://*' } },
-  { 'BufEnter', 'startinsert', opts = { pattern = 'term://*' } },
+-- Create a new horizontal terminal
+keymap.set({ 'n', 't' }, '<C-S-Enter>', function()
+  local Terminal = require('toggleterm.terminal').Terminal
+  Terminal:new({ direction = 'horizontal' }):open()
+end, {
+  desc = 'Create a new terminal',
+})
+
+-- Set autocmds for terminal
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = 'term://*',
+  callback = function()
+    vim.opt_local.signcolumn = 'no'
+    vim.opt_local.statuscolumn = ''
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = 'term://*',
+  callback = function()
+    vim.cmd('startinsert')
+  end,
 })
