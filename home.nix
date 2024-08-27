@@ -37,6 +37,10 @@
     pre-commit
     slack
     sops
+    pandoc
+
+    gnused
+    cloc
 
     #terraform
     terraform-docs
@@ -87,7 +91,6 @@
 
     opam
 
-    tenv
     terragrunt
     driftctl
   ];

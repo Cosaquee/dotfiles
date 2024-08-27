@@ -1,8 +1,8 @@
-require('legendary').setup({
-    include_builtin = false,
-    select_prompt = 'Legendary'
-})
-
-require('legendary').keymaps({
-    { '<leader>', ':Legendary<cr>', opts = { silent = true }, description = 'Show legendary' }
-})
+--require('legendary').setup({
+--    include_builtin = false,
+--    select_prompt = 'Legendary'
+--})
+--
+--require('legendary').keymaps({
+--    { '<leader>', ':Legendary<cr>', opts = { silent = true }, description = 'Show legendary' }
+--})

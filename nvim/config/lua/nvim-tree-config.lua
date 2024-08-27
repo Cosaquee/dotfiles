@@ -41,9 +41,3 @@ require'nvim-tree'.setup {
         }
     }
 }
-
-require('legendary').keymaps({
-    { '<leader>t', ':NvimTreeToggle<cr>', opts = { silent = true }, description = 'Nvim Tree: Toggle' },
-    { '<leader>tr', ':NvimTreeRefresh<cr>', opts = { silent = true }, description = 'Nvim Tree: Refresh' },
-    { '<leader>tf', ':NvimTreeFocus<cr>', opts = { silent = true }, description = 'Nvim Tree: Focus' }
-})
