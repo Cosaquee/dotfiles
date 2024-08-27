@@ -2,6 +2,11 @@ require('gitblame').setup {
   enabled = false
 }
 
-require('legendary').keymaps({
-  { '<Leader>l', ':GitBlameToggle<CR>', opts = { silent = true }, description = "Toggle Git Blame" },
+local keymap = vim.keymap
+
+-- Map '<Leader>l' to toggle Git Blame
+keymap.set('n', '<Leader>l', ':GitBlameToggle<CR>', {
+  silent = true,
+  desc = 'Toggle Git Blame',
 })
+

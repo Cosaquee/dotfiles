@@ -1,8 +1,23 @@
 -- Telescope Settings
-local opts = { noremap = true }
-require('legendary').keymaps({
-    { '<Leader>ff', require('telescope.builtin').find_files, description = 'Telescope: Find files', opts = opts },
-    { '<Leader>fg', require('telescope.builtin').live_grep, description = 'Telescope: Live grep', opts = opts },
-    { '<Leader>fb', require('telescope.builtin').buffers, description = 'Telescope: Buffers', opts = opts },
-    { '<Leader>fh', require('telescope.builtin').help_tags, description = 'Telescope: Help tags', opts = opts }
+local keymap = vim.keymap
+local uv = vim.uv
+
+keymap.set("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", {
+  silent = true,
+  desc = "find files",
+})
+
+keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", {
+  silent = true,
+  desc = "live grep",
+})
+
+keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", {
+  silent = true,
+  desc = "buffers",
+})
+
+keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", {
+  silent = true,
+  desc = "help tags",
 })

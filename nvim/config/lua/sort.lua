@@ -1,6 +1,10 @@
 require("sort").setup({})
 
-require('legendary').keymaps({
-  { 'go', 'Sort<CR>', opts = { noremap = true, silent = true } 
-})
+local keymap = vim.keymap
 
+-- Map 'go' to execute the ':Sort' command
+keymap.set('n', 'go', ':Sort<CR>', {
+  noremap = true,
+  silent = true,
+  desc = 'Sort lines in the current buffer',
+})

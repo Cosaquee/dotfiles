@@ -22,8 +22,6 @@ with lib;
         indent-blankline-nvim
         nvim-autopairs
         telescope-nvim
-        trouble-nvim
-        legendary-nvim
 
         git-blame-nvim
 
@@ -35,7 +33,6 @@ with lib;
 
         nvim-lspconfig
         nvim-lsp-ts-utils
-
 
         # Debug adapter protocol
         nvim-dap
@@ -57,6 +54,7 @@ with lib;
         sort-nvim
         trouble-nvim
         barbar-nvim
+        which-key-nvim
       ];
 
       extraPackages = with pkgs; [
