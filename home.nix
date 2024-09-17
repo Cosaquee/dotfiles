@@ -3,98 +3,28 @@
   home.homeDirectory = "/Users/karolkozakowski";
   home.stateVersion = "24.05";
   imports = [ ./nvim ];
+
   home.packages = with pkgs; [
-    ack
-    asdf-vm
-    aws-vault
-    awscli2
-    bat
-    cw
-    detect-secrets
-    diff-so-fancy
-    direnv
-    discord
-    d2
-    docker
-    docker-compose
-    eksctl
-    eza
-    fzf
-    go
-    ghorg
-    git-lfs
-    gitleaks
-    jq
-    k9s
-    kubectx
-    kubernetes-helm
-    kustomize
-    lazygit
-    lsd
-    minikube
-    nixfmt
-    openssh
-    pre-commit
-    slack
-    sops
-    pandoc
+    # Development tools
+    go git-lfs gitleaks pre-commit ruby rubyPackages.rails python310Full
 
-    gnused
-    cloc
+    # Cloud and DevOps tools
+    aws-vault awscli2 eksctl kubectl kubectx kubernetes-helm kustomize minikube terraform terraform-docs terraform-ls tflint driftctl lazygit
 
-    #terraform
-    terraform-docs
-    terraform-ls
-    tflint
+    # System utilities
+    bat eza fzf direnv lsd openssh sops jq yq zellij zoxide shellcheck tree httpie
 
-    tree
-    yq
-    zellij
-    zoxide
-    gh
-    vscode
-    yaml-language-server
-    httpie
+    # Productivity and communication
+    discord slack zoom-us
 
-    python310Full
+    # Other tools
+    ack asdf-vm docker docker-compose steampipe legitify syft cloc opam devenv proto
 
-    zoom-us
-    # Currently pretty old version
-    # warp-terminal
+    # Terminal and editor settings
+    alacritty alacritty-theme vscode yaml-language-server nodePackages.typescript nodejs_20 yarn
 
-    nodejs_20
-    yarn
-    moon
-
-    gnupg1
-    pinentry_mac
-    yubico-piv-tool
-
-    steampipe
-    legitify
-
-    alacritty
-    alacritty-theme
-
-    kubecm
-
-    syft
-    nodePackages.typescript
-    moon
-
-    ruby
-    rubyPackages.rails
-
-    shellcheck
-
-    alacritty
-
-    opam
-
-    terragrunt
-    driftctl
-
-    yazi
+    # Additional utilities
+    gnupg1 pinentry_mac yubico-piv-tool
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -129,30 +59,38 @@
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
-  programs.zsh = {
-    shellAliases = {
-      g = "lazygit";
-      gs = "git status";
-      c = "cd /Volumes/Code";
-      ru = "cd $(git rev-parse --show-toplevel)";
-      gc = "git checkout - ";
-      gp = "git pull";
-    };
-    oh-my-zsh = {
-      enable = true;
-      theme = "simple";
-      plugins = [ "terraform" "kubectl" "fzf" ];
-    };
-    plugins = [{
-      name = "zsh-kubectl-prompt";
-      src = pkgs.fetchFromGitHub {
-        owner = "superbrothers";
-        repo = "zsh-kubectl-prompt";
-        rev = "v1.1.0";
-        sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
-      };
-    }];
+programs.zsh = {
+  shellAliases = {
+    g = "lazygit";
+    gs = "git status";
+    c = "cd /Volumes/Code";
+    ru = "cd $(git rev-parse --show-toplevel)";
+    gc = "git checkout -";
+    gp = "git pull";
+
+    # New aliases
+    update = "nix-channel --update && nix-env -u";
+    clean = "nix-collect-garbage";
+    k = "kubectl";
+    tf = "terraform";
   };
+
+  oh-my-zsh = {
+    enable = true;
+    theme = "simple";
+    plugins = [ "terraform" "kubectl" "fzf" ];
+  };
+
+  plugins = [{
+    name = "zsh-kubectl-prompt";
+    src = pkgs.fetchFromGitHub {
+      owner = "superbrothers";
+      repo = "zsh-kubectl-prompt";
+      rev = "v1.1.0";
+      sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
+    };
+  }];
+};
 
   programs = {
     bat.enable = true;
@@ -265,23 +203,12 @@
       "files.insertFinalNewline" = true;
       "files.trimTrailingWhitespace" = true;
 
-      "[typescriptreact]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-
-      "[typescript]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-
-      inlineSuggest.enabled = true;
-
       files = {
         eol = "\n";
         insertFinalNewline = true;
         trimTrailingWhitespace = true;
       };
 
-      github.copilot.enable."*" = true;
       security.workspace.trust.enabled = false;
 
       keybindings = [
@@ -307,19 +234,7 @@
       };
     };
 
-    extensions = with pkgs.vscode-extensions; [
-      arcticicestudio.nord-visual-studio-code
-      github.copilot
-      golang.go
-      hashicorp.terraform
-      ms-python.python
-      pkief.material-icon-theme
-      pkief.material-product-icons
-      roman.ayu-next
-      vscodevim.vim
-      tamasfe.even-better-toml
-      prisma.prisma
-    ];
+    extensions = import ./vscode-extensions.nix { pkgs = pkgs; vscode-extensions = pkgs.vscode-extensions; };
   };
 
 }
