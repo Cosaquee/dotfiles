@@ -53,8 +53,10 @@ with lib;
         vim-floaterm
         sort-nvim
         trouble-nvim
-        barbar-nvim
         which-key-nvim
+
+        tabby-nvim
+        bufferline-nvim
       ];
 
       extraPackages = with pkgs; [
