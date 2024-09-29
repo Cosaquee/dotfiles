@@ -6,25 +6,78 @@
 
   home.packages = with pkgs; [
     # Development tools
-    go git-lfs gitleaks pre-commit ruby rubyPackages.rails python310Full
+    go
+    git-lfs
+    gitleaks
+    pre-commit
+    ruby
+    rubyPackages.rails
+    python310Full
 
     # Cloud and DevOps tools
-    aws-vault awscli2 eksctl kubectl kubectx kubernetes-helm kustomize minikube terraform terraform-docs terraform-ls tflint driftctl lazygit
+    aws-vault
+    awscli2
+    eksctl
+    kubectl
+    kubectx
+    kubernetes-helm
+    kustomize
+    minikube
+    terraform
+    terraform-docs
+    terraform-ls
+    tflint
+    driftctl
+    lazygit
+    terragrunt
 
     # System utilities
-    bat eza fzf direnv lsd openssh sops jq yq zellij zoxide shellcheck tree httpie
+    bat
+    eza
+    fzf
+    direnv
+    lsd
+    openssh
+    sops
+    jq
+    yq
+    zellij
+    zoxide
+    shellcheck
+    tree
+    httpie
 
     # Productivity and communication
-    discord slack zoom-us
+    discord
+    slack
+    zoom-us
 
     # Other tools
-    ack asdf-vm docker docker-compose steampipe legitify syft cloc opam devenv proto
+    ack
+    asdf-vm
+    docker
+    docker-compose
+    steampipe
+    legitify
+    syft
+    cloc
+    opam
+    devenv
+    proto
 
     # Terminal and editor settings
-    alacritty alacritty-theme vscode yaml-language-server nodePackages.typescript nodejs_20 yarn
+    alacritty
+    alacritty-theme
+    vscode
+    yaml-language-server
+    nodePackages.typescript
+    nodejs_20
+    yarn
 
     # Additional utilities
-    gnupg1 pinentry_mac yubico-piv-tool
+    gnupg1
+    pinentry_mac
+    yubico-piv-tool
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -59,82 +112,42 @@
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
 
-programs.zsh = {
-  shellAliases = {
-    g = "lazygit";
-    gs = "git status";
-    c = "cd /Volumes/Code";
-    ru = "cd $(git rev-parse --show-toplevel)";
-    gc = "git checkout -";
-    gp = "git pull";
+  programs.zsh = {
+    shellAliases = {
+      g = "lazygit";
+      gs = "git status";
+      c = "cd /Volumes/Code";
+      ru = "cd $(git rev-parse --show-toplevel)";
+      gc = "git checkout -";
+      gp = "git pull";
 
-    # New aliases
-    update = "nix-channel --update && nix-env -u";
-    clean = "nix-collect-garbage";
-    k = "kubectl";
-    tf = "terraform";
-  };
-
-  oh-my-zsh = {
-    enable = true;
-    theme = "simple";
-    plugins = [ "terraform" "kubectl" "fzf" ];
-  };
-
-  plugins = [{
-    name = "zsh-kubectl-prompt";
-    src = pkgs.fetchFromGitHub {
-      owner = "superbrothers";
-      repo = "zsh-kubectl-prompt";
-      rev = "v1.1.0";
-      sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
+      # New aliases
+      update = "nix-channel --update && nix-env -u";
+      clean = "nix-collect-garbage";
+      k = "kubectl";
+      tf = "terraform";
     };
-  }];
-};
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "simple";
+      plugins = [ "terraform" "kubectl" "fzf" ];
+    };
+
+    plugins = [{
+      name = "zsh-kubectl-prompt";
+      src = pkgs.fetchFromGitHub {
+        owner = "superbrothers";
+        repo = "zsh-kubectl-prompt";
+        rev = "v1.1.0";
+        sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
+      };
+    }];
+  };
 
   programs = {
     bat.enable = true;
     exa.enable = true;
-  };
-
-  programs.alacritty = {
-    enable = true;
-
-    settings = {
-      font = {
-        size = 16.0;
-        normal = { family = "Berkeley Mono"; };
-        };
-
-      colors = rec {
-        primary = {
-          background = "#24283b";
-          foreground = "#c0caf5";
-        };
-
-        normal = {
-          black = "#1d202f";
-          red = "#f7768e";
-          green = "#9ece6a";
-          yellow = "#e0af68";
-          blue = "#7aa2f7";
-          magenta = "#bb9af7";
-          cyan = "#7dcfff";
-          white = "#a9b1d6";
-        };
-
-        bright = {
-          black = "#414868";
-          red = "#f7768e";
-          green = "#9ece6a";
-          yellow = "#e0af68";
-          blue = "#7aa2f7";
-          magenta = "#bb9af7";
-          cyan = "#7dcfff";
-          white = "#c0caf5";
-        };
-      };
-    };
   };
 
   programs.zoxide.enable = true;
