@@ -13,6 +13,7 @@
     ruby
     rubyPackages.rails
     python310Full
+    moon
 
     # Cloud and DevOps tools
     aws-vault
