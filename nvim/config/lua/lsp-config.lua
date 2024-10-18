@@ -2,9 +2,9 @@
 local lspconfig = require('lspconfig')
 
 lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
-
+lspconfig.ts_ls.setup {}
 lspconfig.terraformls.setup {}
+
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
   pattern = {"*.tf", "*.tfvars"},
   callback = function()

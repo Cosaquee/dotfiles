@@ -21,3 +21,8 @@ keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()
   silent = true,
   desc = "help tags",
 })
+
+keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>", {
+  silent = true,
+  desc = "Resume last Telescope search",
+})

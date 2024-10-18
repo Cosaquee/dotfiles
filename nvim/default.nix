@@ -16,7 +16,8 @@ with lib;
         nvim-web-devicons
         nvim-tree-lua
 
-        feline-nvim
+        lualine-nvim
+        vim-airline
 
         gitsigns-nvim
         indent-blankline-nvim
