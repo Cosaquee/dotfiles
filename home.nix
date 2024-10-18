@@ -12,7 +12,7 @@
     pre-commit
     ruby
     rubyPackages.rails
-    python310Full
+    python311Full
     moon
 
     # Cloud and DevOps tools
@@ -31,6 +31,7 @@
     driftctl
     lazygit
     terragrunt
+    k9s
 
     # System utilities
     bat
@@ -127,6 +128,7 @@
       clean = "nix-collect-garbage";
       k = "kubectl";
       tf = "terraform";
+      tg = "terragrunt";
     };
 
     oh-my-zsh = {

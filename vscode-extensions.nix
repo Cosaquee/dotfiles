@@ -10,4 +10,5 @@
   vscodevim.vim
   tamasfe.even-better-toml
   prisma.prisma
+  hashicorp.hcl
 ]
