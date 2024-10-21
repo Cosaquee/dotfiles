@@ -16,7 +16,10 @@ with lib;
         nvim-web-devicons
         nvim-tree-lua
 
-        lualine-nvim
+        #lualine-nvim
+        #luatab-nvim
+
+        #lualine-nvim
         vim-airline
 
         gitsigns-nvim
@@ -29,8 +32,8 @@ with lib;
         nvim-treesitter.withAllGrammars
 
         # LSP
-        mason-nvim
-        mason-lspconfig-nvim
+        #mason-nvim
+        #mason-lspconfig-nvim
 
         nvim-lspconfig
         nvim-lsp-ts-utils
@@ -56,8 +59,8 @@ with lib;
         trouble-nvim
         which-key-nvim
 
-        tabby-nvim
-        bufferline-nvim
+        #tabby-nvim
+        #bufferline-nvim
       ];
 
       extraPackages = with pkgs; [
