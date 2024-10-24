@@ -38,20 +38,25 @@ end, {
 })
 
 -- Nvim Tree keymaps
-keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<cr>", {
+keymap.set("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", {
   silent = true,
   desc = "Nvim Tree: Toggle",
 })
 
-keymap.set("n", "<leader>tr", "<cmd>NvimTreeRefresh<cr>", {
+keymap.set("n", "<leader>nr", "<cmd>NvimTreeRefresh<cr>", {
   silent = true,
   desc = "Nvim Tree: Refresh",
 })
 
-keymap.set("n", "<leader>tf", "<cmd>NvimTreeFocus<cr>", {
+keymap.set("n", "<leader>nf", "<cmd>NvimTreeFocus<cr>", {
   silent = true,
   desc = "Nvim Tree: Focus",
 })
 
-
-
+keymap.set("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
+keymap.set("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+keymap.set("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+keymap.set("n", "<leader>tn", ":tabn<CR>", { noremap = true })
+keymap.set("n", "<leader>tp", ":tabp<CR>", { noremap = true })
+keymap.set("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
+keymap.set("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
