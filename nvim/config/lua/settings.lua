@@ -25,3 +25,5 @@ opt.background="dark"
 g.nord_italic = false
 
 vim.cmd[[colorscheme tokyonight-storm]]
+
+opt.clipboard = "unnamedplus"
