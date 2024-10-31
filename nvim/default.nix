@@ -1,6 +1,16 @@
 { config, pkgs, lib, ... }:
 with lib;
-{
+let
+  scope = pkgs.vimUtils.buildVimPlugin {
+    name = "scope";
+    src = pkgs.fetchFromGitHub {
+      owner = "tiagovla";
+      repo = "scope.nvim";
+      rev = "932102696ead2b7ab9ff65017767b57e2722fdde";
+      sha256 = "sha256-2eM+KXsF66ocdaV4zVHy8afgP1v+Gj85R3XBhmDORtU=";
+    };
+  };
+in {
   config = {
     programs.neovim = {
       enable = true;
@@ -59,8 +69,10 @@ with lib;
         trouble-nvim
         which-key-nvim
 
-        #tabby-nvim
-        #bufferline-nvim
+        tabby-nvim
+        bufferline-nvim
+
+        scope
       ];
 
       extraPackages = with pkgs; [
@@ -84,6 +96,8 @@ with lib;
         # Telescope tools
         ripgrep
         fd
+
+        # custom plugins
       ];
 
       extraConfig = ''
