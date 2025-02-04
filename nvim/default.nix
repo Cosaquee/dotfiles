@@ -10,6 +10,16 @@ let
       sha256 = "sha256-2eM+KXsF66ocdaV4zVHy8afgP1v+Gj85R3XBhmDORtU=";
     };
   };
+
+  cinnamon = pkgs.vimUtils.buildVimPlugin {
+    name = "cinnamon";
+    src = pkgs.fetchFromGitHub {
+      owner = "declancm";
+      repo = "cinnamon.nvim";
+      rev = "ecd211e46a1d4fb0efffbdb2c2bbd59785605870";
+      sha256 = "sha256-+nDYk3zkLlj9YkzfK8mbD22iLWaHpzHImxPt3EVfyV0=";
+    };
+  };
 in {
   config = {
     programs.neovim = {
@@ -71,8 +81,10 @@ in {
 
         tabby-nvim
         bufferline-nvim
+        barbar-nvim
 
         scope
+        cinnamon
       ];
 
       extraPackages = with pkgs; [
@@ -98,6 +110,8 @@ in {
         fd
 
         # custom plugins
+
+        cinnamon
       ];
 
       extraConfig = ''

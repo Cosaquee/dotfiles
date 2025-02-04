@@ -14,6 +14,8 @@
     rubyPackages.rails
     python311Full
     moon
+    rustup
+    openssl
 
     # Cloud and DevOps tools
     aws-vault
