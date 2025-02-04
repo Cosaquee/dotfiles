@@ -1,0 +1,2 @@
+require('barbar').setup {
+}
