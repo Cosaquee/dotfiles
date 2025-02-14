@@ -39,3 +39,12 @@ g.nord_italic = false
 vim.cmd[[colorscheme tokyonight-storm]]
 
 opt.clipboard = "unnamedplus"
+
+vim.diagnostic.config({
+  virtual_text = false,  -- Disable inline virtual text
+  signs = true,          -- Keep signs in the gutter
+  underline = true,       -- Keep underline for errors
+  update_in_insert = false,
+  severity_sort = true,
+  float = false,         -- Disable floating diagnostics
+})

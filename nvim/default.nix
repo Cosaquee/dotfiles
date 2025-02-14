@@ -78,6 +78,7 @@ in {
         sort-nvim
         trouble-nvim
         which-key-nvim
+        noice-nvim
 
         tabby-nvim
         bufferline-nvim
