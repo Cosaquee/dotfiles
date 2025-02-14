@@ -1,43 +1,46 @@
-require('trouble').setup {
-  auto_preview = true,
-  auto_fold = true,
-  use_lsp_diagnostic_signs = true,
+require('trouble').setup{
+    position = "bottom", -- position of the list can be: bottom, top, left, right
+    icons = {}, -- use devicons for filenames
+    mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+    fold_open = "", -- icon used for open folds
+    fold_closed = "", -- icon used for closed folds
+    group = true, -- group results by file
+    padding = true, -- add an extra new line on top of the list
+    action_keys = { -- key mappings for actions in the trouble list
+        close = "q", -- close the list
+        refresh = "r", -- manually refresh
+        jump = {"<cr>", "<tab>"}, -- jump to the diagnostic or open / close folds
+        toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+        toggle_preview = "P", -- toggle auto_preview
+        hover = "H", -- opens a small popup with the full multiline message
+        preview = "p", -- preview the diagnostic location
+        close_folds = {"zM", "zm"}, -- close all folds
+        open_folds = {"zR", "zr"}, -- open all folds
+        toggle_fold = {"zA", "za"}, -- toggle fold of current file
+        previous = "l", -- preview item
+        next = "k" -- next item
+    },
+    indent_lines = true, -- add an indent guide below the fold icons
+    auto_open = false, -- automatically open the list when you have diagnostics
+    auto_close = false, -- automatically close the list when you have no diagnostics
+    auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+    auto_fold = false, -- automatically fold a file trouble list at creation
+    signs = {
+        -- icons / text used for a diagnostic
+        error = "",
+        warning = "",
+        hint = "",
+        information = "",
+        other = "﫠"
+    },
+    use_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
 }
 
+
 local keymap = vim.keymap
+local uv = vim.uv
 
--- Toggle Trouble
-keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', {
+keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", {
   silent = true,
-  desc = 'Trouble: Toggle',
-})
-
--- Toggle Trouble with LSP workspace diagnostics
-keymap.set('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<cr>', {
-  silent = true,
-  desc = 'Trouble: Toggle Workspace Diagnostics',
-})
-
--- Toggle Trouble with LSP document diagnostics
-keymap.set('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<cr>', {
-  silent = true,
-  desc = 'Trouble: Toggle Document Diagnostics',
-})
-
--- Toggle Trouble with location list
-keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', {
-  silent = true,
-  desc = 'Trouble: Toggle Location List',
-})
-
--- Toggle Trouble with quickfix list
-keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', {
-  silent = true,
-  desc = 'Trouble: Toggle Quickfix',
-})
-
--- Toggle Trouble with LSP references
-keymap.set('n', '<leader>xr', '<cmd>TroubleToggle lsp_references<cr>', {
-  silent = true,
-  desc = 'Trouble: Toggle References',
+  desc = "Trouble: Toggle",
 })
