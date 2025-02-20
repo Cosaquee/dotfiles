@@ -30,6 +30,7 @@ in {
 
       plugins = with pkgs.vimPlugins; [
         vim-sensible
+        plenary-nvim
 
         vim-nix
 
@@ -46,6 +47,7 @@ in {
         indent-blankline-nvim
         nvim-autopairs
         telescope-nvim
+        twilight-nvim
 
         git-blame-nvim
 
@@ -57,6 +59,8 @@ in {
 
         nvim-lspconfig
         nvim-lsp-ts-utils
+
+        null-ls-nvim
 
         # Debug adapter protocol
         nvim-dap
