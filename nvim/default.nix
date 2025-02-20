@@ -20,6 +20,16 @@ let
       sha256 = "sha256-+nDYk3zkLlj9YkzfK8mbD22iLWaHpzHImxPt3EVfyV0=";
     };
   };
+
+  venv-selector = pkgs.vimUtils.buildVimPlugin {
+    name = "venv-selector";
+    src = pkgs.fetchFromGitHub {
+      owner = "linux-cultist";
+      repo = "venv-selector.nvim";
+      rev = "9b1bfe5aea225853e14358f504c656d4af007035";
+      sha256 = "sha256-XY4hHvslNginl+FxT7owjobInmyhRDwPtNaWOAPpOO0=";
+    };
+  };
 in {
   config = {
     programs.neovim = {
@@ -90,6 +100,7 @@ in {
 
         scope
         cinnamon
+        venv-selector
       ];
 
       extraPackages = with pkgs; [
