@@ -16,6 +16,7 @@
     moon
     rustup
     openssl
+    uv
 
     # Cloud and DevOps tools
     aws-vault
