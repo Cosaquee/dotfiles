@@ -159,6 +159,7 @@
   programs.zoxide.enable = true;
 
   programs.zsh.initExtra = ''
+
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
@@ -167,6 +168,8 @@
 
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     gpgconf --launch gpg-agent
+
+    eval "$(proto activate zsh)"
   '';
 
   programs.vscode = {
