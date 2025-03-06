@@ -70,7 +70,7 @@ in {
         nvim-lspconfig
         nvim-lsp-ts-utils
 
-        null-ls-nvim
+        none-ls-nvim
 
         # Debug adapter protocol
         nvim-dap
@@ -94,9 +94,9 @@ in {
         which-key-nvim
         noice-nvim
 
-        tabby-nvim
         bufferline-nvim
         barbar-nvim
+        yazi-nvim
 
         scope
         cinnamon
