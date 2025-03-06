@@ -1,6 +1,6 @@
-local null_ls = require("null-ls")
+local none_ls = require("none-ls")
 
-null_ls.setup({
+none_lsls.setup({
     sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.completion.spell,
