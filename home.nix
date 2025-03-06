@@ -78,6 +78,7 @@
     nodePackages.typescript
     nodejs_20
     yarn
+    yazi
 
     # Additional utilities
     gnupg1
@@ -126,7 +127,6 @@
       gc = "git checkout -";
       gp = "git pull";
 
-      # New aliases
       update = "nix-channel --update && nix-env -u";
       clean = "nix-collect-garbage";
       k = "kubectl";
