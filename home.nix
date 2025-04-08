@@ -51,6 +51,7 @@
     shellcheck
     tree
     httpie
+    git-filter-repo
 
     # Productivity and communication
     discord
