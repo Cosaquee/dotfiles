@@ -32,9 +32,9 @@
     terraform-ls
     tflint
     driftctl
-    lazygit
     terragrunt
     k9s
+    auth0-cli
 
     # System utilities
     bat
@@ -51,12 +51,13 @@
     shellcheck
     tree
     httpie
-    git-filter-repo
+    delta
 
     # Productivity and communication
     discord
     slack
     zoom-us
+    jrnl
 
     # Other tools
     ack
@@ -159,6 +160,10 @@
 
   programs.zoxide.enable = true;
 
+  programs.lazygit = {
+    enable = true;
+  };
+
   programs.zsh.initExtra = ''
 
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
@@ -166,6 +171,7 @@
     fi
 
     PATH=/Users/karolkozakowski/.local/bin:$PATH
+    TG_PROVIDER_CACHE=1
 
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     gpgconf --launch gpg-agent
