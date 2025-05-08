@@ -27,13 +27,13 @@ keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr
   desc = "Resume last Telescope search",
 })
 
-keymap.set("n", "<leader>b", function()
-  require("telescope.builtin").buffers({
-    show_all_buffers = true,
-    sort_lastused = true,
-    ignore_current_buffer = true,
-  })
-end, {
-  silent = true,
-  desc = "buffers",
-})
+--keymap.set("n", "<leader>b", function()
+--  require("telescope.builtin").buffers({
+--    show_all_buffers = true,
+--    sort_lastused = true,
+--    ignore_current_buffer = true,
+--  })
+--end, {
+--  silent = true,
+--  desc = "buffers",
+--})
