@@ -1,4 +1,10 @@
-{ config, pkgs, nix-vscode-extensions, ... }: {
+{ config, pkgs, nix-vscode-extensions, ... }:
+
+let
+  pythonWithBoto3 = pkgs.python311.withPackages (ps: with ps; [
+    boto3
+  ]);
+in {
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
   home.stateVersion = "24.05";
@@ -12,7 +18,7 @@
     pre-commit
     ruby
     rubyPackages.rails
-    python311Full
+    pythonWithBoto3
     moon
     rustup
     openssl
@@ -88,33 +94,17 @@
     yubico-piv-tool
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
+    # Example file management
     # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/karolkozakowski/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # Add your session variables here if needed
   };
 
   programs.home-manager.enable = true;
@@ -128,7 +118,6 @@
       ru = "cd $(git rev-parse --show-toplevel)";
       gc = "git checkout -";
       gp = "git pull";
-
       update = "nix-channel --update && nix-env -u";
       clean = "nix-collect-garbage";
       k = "kubectl";
@@ -188,35 +177,27 @@
       "editor.linkedEditing" = true;
       "editor.formatOnSave" = true;
 
-      # font
       "editor.fontSize" = 14;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Monolisa";
       "terminal.integrated.fontFamily" = "BerkleyMono";
 
-      # smooth
       "editor.cursorBlinking" = "phase";
       "editor.cursorSmoothCaretAnimation" = "on";
       "editor.smoothScrolling" = true;
 
-      # bracket
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
 
       "json.format.keepLines" = true;
 
-      "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" =
-        false;
-      "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" =
-        false;
+      "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
+      "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces" = false;
 
       "[json]" = {
         "editor.insertSpaces" = false;
         "editor.tabSize" = 2;
       };
-
-      # tree indent
-      # "workbench.tree.indent" = 15;
 
       window.menuBarVisibility = "toggle";
       window.titleBarStyle = "custom";
@@ -263,7 +244,9 @@
       };
     };
 
-    extensions = import ./vscode-extensions.nix { pkgs = pkgs; vscode-extensions = pkgs.vscode-extensions; };
+    extensions = import ./vscode-extensions.nix {
+      pkgs = pkgs;
+      vscode-extensions = pkgs.vscode-extensions;
+    };
   };
-
 }
