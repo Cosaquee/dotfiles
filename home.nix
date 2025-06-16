@@ -23,6 +23,7 @@ in {
     rustup
     openssl
     uv
+    sbcl
 
     # Cloud and DevOps tools
     aws-vault
@@ -64,6 +65,9 @@ in {
     slack
     zoom-us
     jrnl
+    hledger
+    hledger-ui
+    hledger-utils
 
     # Other tools
     ack
