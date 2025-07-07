@@ -7,7 +7,7 @@ let
 in {
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   imports = [ ./nvim ];
 
   home.packages = with pkgs; [
@@ -127,6 +127,7 @@ in {
       k = "kubectl";
       tf = "terraform";
       tg = "terragrunt";
+      pip = "pip3";
     };
 
     oh-my-zsh = {
