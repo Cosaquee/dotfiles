@@ -24,6 +24,7 @@ in {
     openssl
     uv
     sbcl
+    claude-code
 
     # Cloud and DevOps tools
     aws-vault
@@ -68,6 +69,7 @@ in {
     hledger
     hledger-ui
     hledger-utils
+    spotify
 
     # Other tools
     ack
