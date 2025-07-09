@@ -101,6 +101,8 @@ in {
         scope
         cinnamon
         venv-selector
+
+        neoscroll-nvim
       ];
 
       extraPackages = with pkgs; [
