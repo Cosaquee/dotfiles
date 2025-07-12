@@ -98,6 +98,7 @@ in {
     gnupg1
     pinentry_mac
     yubico-piv-tool
+    _1password-cli
   ];
 
   home.file = {
@@ -130,6 +131,7 @@ in {
       tf = "terraform";
       tg = "terragrunt";
       pip = "pip3";
+      homemanager = "cd && cd .config/home-manager";
     };
 
     oh-my-zsh = {

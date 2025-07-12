@@ -30,6 +30,7 @@ let
       sha256 = "sha256-XY4hHvslNginl+FxT7owjobInmyhRDwPtNaWOAPpOO0=";
     };
   };
+
 in {
   config = {
     programs.neovim = {
@@ -127,9 +128,6 @@ in {
         ripgrep
         fd
 
-        # custom plugins
-
-        cinnamon
       ];
 
       extraConfig = ''
