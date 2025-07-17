@@ -63,6 +63,7 @@ in {
         git-blame-nvim
 
         nvim-treesitter.withAllGrammars
+        nvim-treesitter-textsubjects
 
         # LSP
         #mason-nvim
@@ -82,6 +83,8 @@ in {
         # theming
         nord-nvim
         tokyonight-nvim
+        neon
+        nightfox-nvim
 
         copilot-vim
         toggleterm-nvim
@@ -104,6 +107,7 @@ in {
         venv-selector
 
         neoscroll-nvim
+        nvim-lightbulb
       ];
 
       extraPackages = with pkgs; [
