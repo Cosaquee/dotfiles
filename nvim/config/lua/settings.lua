@@ -34,7 +34,8 @@ g.mapleader = ' '
 -- Color Scheme Settings
 vim.cmd("syntax enable")
 
-vim.cmd[[colorscheme dayfox]]
+vim.cmd[[colorscheme everforest]]
+opt.background = "dark"
 
 opt.clipboard = "unnamedplus"
 

@@ -85,6 +85,8 @@ in {
         tokyonight-nvim
         neon
         nightfox-nvim
+        oxocarbon-nvim
+        everforest
 
         copilot-vim
         toggleterm-nvim
