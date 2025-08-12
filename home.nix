@@ -99,6 +99,7 @@ in {
     pinentry_mac
     yubico-piv-tool
     _1password-cli
+    puffin
   ];
 
   home.file = {
