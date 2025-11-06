@@ -87,6 +87,7 @@ in {
         nightfox-nvim
         oxocarbon-nvim
         everforest
+        rose-pine
 
         copilot-vim
         toggleterm-nvim

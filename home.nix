@@ -12,18 +12,14 @@ in {
 
   home.packages = with pkgs; [
     # Development tools
-    go
     git-lfs
     gitleaks
     pre-commit
-    ruby
-    rubyPackages.rails
     pythonWithBoto3
     moon
     rustup
     openssl
     uv
-    sbcl
     claude-code
 
     # Cloud and DevOps tools
@@ -65,32 +61,23 @@ in {
     discord
     slack
     zoom-us
-    jrnl
     hledger
     hledger-ui
     hledger-utils
-    spotify
 
     # Other tools
     ack
-    asdf-vm
     docker
     docker-compose
-    steampipe
-    legitify
-    syft
     cloc
     opam
     devenv
     proto
 
     # Terminal and editor settings
-    alacritty
-    alacritty-theme
-    vscode
     yaml-language-server
     nodePackages.typescript
-    nodejs_20
+    nodejs_22
     yarn
     yazi
 
