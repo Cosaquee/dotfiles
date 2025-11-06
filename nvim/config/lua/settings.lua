@@ -34,7 +34,7 @@ g.mapleader = ' '
 -- Color Scheme Settings
 vim.cmd("syntax enable")
 
-vim.cmd[[colorscheme everforest]]
+vim.cmd[[colorscheme nord]]
 opt.background = "dark"
 
 opt.clipboard = "unnamedplus"
