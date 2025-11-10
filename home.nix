@@ -21,6 +21,7 @@ in {
     openssl
     uv
     claude-code
+    chatgpt
 
     # Cloud and DevOps tools
     aws-vault
@@ -39,6 +40,7 @@ in {
     terragrunt
     k9s
     auth0-cli
+    aws-assume-role
 
     # System utilities
     bat
