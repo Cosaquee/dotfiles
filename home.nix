@@ -8,13 +8,13 @@ in {
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
   home.stateVersion = "24.11";
-  imports = [ ./nvim ];
 
+  # Import shared configuration (includes nvim and common packages)
+  imports = [ ./modules/shared.nix ];
+
+  # macOS-specific packages
   home.packages = with pkgs; [
     # Development tools
-    git-lfs
-    gitleaks
-    pre-commit
     pythonWithBoto3
     moon
     rustup
@@ -22,6 +22,7 @@ in {
     uv
     claude-code
     chatgpt
+    opencommit
 
     # Cloud and DevOps tools
     aws-vault
@@ -41,23 +42,10 @@ in {
     k9s
     auth0-cli
     aws-assume-role
+    mkcert
 
-    # System utilities
-    bat
-    eza
-    fzf
-    direnv
-    lsd
-    openssh
+    # Additional system utilities (beyond shared)
     sops
-    jq
-    yq
-    zellij
-    zoxide
-    shellcheck
-    tree
-    httpie
-    delta
 
     # Productivity and communication
     discord
@@ -68,7 +56,6 @@ in {
     hledger-utils
 
     # Other tools
-    ack
     docker
     docker-compose
     cloc
@@ -81,9 +68,8 @@ in {
     nodePackages.typescript
     nodejs_22
     yarn
-    yazi
 
-    # Additional utilities
+    # macOS-specific utilities
     gnupg1
     pinentry_mac
     yubico-piv-tool
@@ -92,6 +78,9 @@ in {
   ];
 
   home.file = {
+    # Create Terraform plugin cache directory
+    ".terraform.d/plugin-cache/.keep".text = "";
+
     # Example file management
     # ".screenrc".source = dotfiles/screenrc;
     # ".gradle/gradle.properties".text = ''
@@ -104,31 +93,16 @@ in {
     # Add your session variables here if needed
   };
 
-  programs.home-manager.enable = true;
-  programs.zsh.enable = true;
-
+  # macOS-specific shell configuration
   programs.zsh = {
     shellAliases = {
-      g = "lazygit";
-      gs = "git status";
       c = "cd /Volumes/Code";
-      ru = "cd $(git rev-parse --show-toplevel)";
-      gc = "git checkout -";
-      gp = "git pull";
-      update = "nix-channel --update && nix-env -u";
-      clean = "nix-collect-garbage";
       k = "kubectl";
       tf = "terraform";
       tg = "terragrunt";
-      pip = "pip3";
-      homemanager = "cd && cd .config/home-manager";
     };
 
-    oh-my-zsh = {
-      enable = true;
-      theme = "simple";
-      plugins = [ "terraform" "kubectl" "fzf" ];
-    };
+    oh-my-zsh.plugins = [ "terraform" "kubectl" "fzf" ];
 
     plugins = [{
       name = "zsh-kubectl-prompt";
@@ -141,17 +115,6 @@ in {
     }];
   };
 
-  programs = {
-    bat.enable = true;
-    exa.enable = true;
-  };
-
-  programs.zoxide.enable = true;
-
-  programs.lazygit = {
-    enable = true;
-  };
-
   programs.zsh.initExtra = ''
 
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
@@ -159,7 +122,9 @@ in {
     fi
 
     PATH=/Users/karolkozakowski/.local/bin:$PATH
-    TG_PROVIDER_CACHE=1
+
+    # Terraform provider caching
+    export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     gpgconf --launch gpg-agent
