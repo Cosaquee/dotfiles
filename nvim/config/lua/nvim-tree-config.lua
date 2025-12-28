@@ -1,6 +1,9 @@
 require'nvim-tree'.setup {
   view = {
-    width = 30,
+    preserve_window_proportions = false,
+    width = function()
+      return math.floor(vim.o.columns * 0.20)
+    end,
   },
   renderer = {
     group_empty = true,
@@ -12,6 +15,3 @@ require'nvim-tree'.setup {
     enable = true,
   },
 }
-
-local keymap = vim.keymap
-local uv = vim.uv
