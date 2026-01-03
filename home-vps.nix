@@ -52,7 +52,7 @@ in {
   };
 
   home.sessionVariables = {
-    # Add your VPS-specific session variables here
+    SHELL = "${pkgs.zsh}/bin/zsh";
   };
 
   # VPS-specific shell configuration
