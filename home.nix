@@ -68,6 +68,7 @@ in {
     nodePackages.typescript
     nodejs_22
     yarn
+    pnpm
 
     # macOS-specific utilities
     gnupg1
