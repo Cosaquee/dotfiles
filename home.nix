@@ -7,7 +7,8 @@ let
 in {
   home.username = "karolkozakowski";
   home.homeDirectory = "/Users/karolkozakowski";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
+  home.enableNixpkgsReleaseCheck = false;
 
   # Import shared configuration (includes nvim and common packages)
   imports = [ ./modules/shared.nix ];
@@ -48,9 +49,6 @@ in {
     sops
 
     # Productivity and communication
-    discord
-    slack
-    zoom-us
     hledger
     hledger-ui
     hledger-utils
@@ -79,23 +77,20 @@ in {
   ];
 
   home.file = {
-    # Create Terraform plugin cache directory
-    ".terraform.d/plugin-cache/.keep".text = "";
-
-    # Example file management
-    # ".screenrc".source = dotfiles/screenrc;
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # Add managed files here if needed
   };
 
-  home.sessionVariables = {
-    # Add your session variables here if needed
-  };
+  home.sessionVariables = { };
 
-  # macOS-specific shell configuration
+  ############################
+  # PROGRAMS CONFIGURATION
+  ############################
+
+  programs.home-manager.enable = true;
+
   programs.zsh = {
+    enable = true;
+
     shellAliases = {
       c = "cd /Volumes/Code";
       k = "kubectl";
@@ -114,22 +109,26 @@ in {
         sha256 = "sha256-9fdUGtdaiL/176UQhkJck99vcRIeeJ5utVuGa2WigDQ=";
       };
     }];
+
+    # MIGRATED: initExtra → initContent
+    initContent = ''
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+
+      PATH=/Users/karolkozakowski/.local/bin:$PATH
+      TG_PROVIDER_CACHE=1
+
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      gpgconf --launch gpg-agent
+
+      eval "$(proto activate zsh)"
+    '';
   };
 
-  programs.zsh.initExtra = ''
-
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-
-    PATH=/Users/karolkozakowski/.local/bin:$PATH
-
-    # Terraform provider caching
-    export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
-
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    gpgconf --launch gpg-agent
-
-    eval "$(proto activate zsh)"
-  '';
+  # Enable additional programs properly
+  programs.bat.enable = true;
+  programs.eza.enable = true;   # replaces deprecated exa
+  programs.zoxide.enable = true;
+  programs.lazygit.enable = true;
 }
