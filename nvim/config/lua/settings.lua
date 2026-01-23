@@ -28,15 +28,11 @@ opt.splitbelow = true
 opt.splitright = true
 opt.splitkeep = "cursor"
 
--- Set leader key
+-- Set leader key (must be set before lazy.nvim loads)
 g.mapleader = ' '
+g.maplocalleader = ' '
 
--- Color Scheme Settings
-vim.cmd("syntax enable")
-
-vim.cmd[[colorscheme nord]]
 opt.background = "dark"
-
 opt.clipboard = "unnamedplus"
 
 vim.diagnostic.config({

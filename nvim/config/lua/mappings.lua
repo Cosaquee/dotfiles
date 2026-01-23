@@ -37,22 +37,7 @@ end, {
   desc = "reload init.lua",
 })
 
--- Nvim Tree keymaps
-keymap.set("n", "<leader>n", "<cmd>NvimTreeToggle<cr>", {
-  silent = true,
-  desc = "Nvim Tree: Toggle",
-})
-
-keymap.set("n", "<leader>nr", "<cmd>NvimTreeRefresh<cr>", {
-  silent = true,
-  desc = "Nvim Tree: Refresh",
-})
-
-keymap.set("n", "<leader>nf", "<cmd>NvimTreeFocus<cr>", {
-  silent = true,
-  desc = "Nvim Tree: Focus",
-})
-
+-- Tab management
 keymap.set("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
 keymap.set("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
 keymap.set("n", "<leader>to", ":tabonly<CR>", { noremap = true })
