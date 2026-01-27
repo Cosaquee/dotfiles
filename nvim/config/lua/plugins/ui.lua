@@ -32,25 +32,6 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
   {
-    "romgrk/barbar.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = "BufAdd",
-    init = function()
-      vim.g.barbar_auto_setup = false
-    end,
-    config = function()
-      require("barbar").setup({})
-    end,
-    keys = {
-      { "<leader>[", "<cmd>BufferPrevious<cr>", desc = "Previous buffer" },
-      { "<leader>]", "<cmd>BufferNext<cr>", desc = "Next buffer" },
-      { "<leader>bd", "<cmd>BufferClose<cr>", desc = "Close buffer" },
-      { "<leader>bp", "<cmd>BufferPin<cr>", desc = "Pin buffer" },
-      { "<leader>bl", "<cmd>BufferCloseAllButCurrentOrPinned<cr>", desc = "Close all but current/pinned" },
-    },
-  },
-
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim" },
@@ -161,7 +142,15 @@ return {
   },
 
   {
-    "vim-airline/vim-airline",
-    event = "VeryLazy",
+    'tomiis4/BufferTabs.nvim',
+    dependencies = {
+        'nvim-tree/nvim-web-devicons', -- optional
+    },
+    lazy = false,
+    config = function()
+        require('buffertabs').setup({
+            -- config
+        })
+    end
   },
 }
