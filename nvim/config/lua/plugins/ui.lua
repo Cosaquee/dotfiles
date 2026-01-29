@@ -142,15 +142,27 @@ return {
   },
 
   {
-    'tomiis4/BufferTabs.nvim',
+    'nanozuki/tabby.nvim',
     dependencies = {
-        'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',
     },
-    lazy = false,
+    event = 'VimEnter',
     config = function()
-        require('buffertabs').setup({
-            -- config
-        })
-    end
+      require('tabby').setup({
+        preset = 'active_wins_at_tail',
+        option = {
+          nerdfont = true,
+          lualine_theme = nil,
+        },
+      })
+      -- Keymaps for tab management
+      vim.keymap.set('n', '<leader>ta', ':$tabnew<CR>', { desc = 'New tab' })
+      vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
+      vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
+      vim.keymap.set('n', '<leader>tn', ':tabn<CR>', { desc = 'Next tab' })
+      vim.keymap.set('n', '<leader>tp', ':tabp<CR>', { desc = 'Previous tab' })
+      vim.keymap.set('n', '<leader>tmp', ':-tabmove<CR>', { desc = 'Move tab left' })
+      vim.keymap.set('n', '<leader>tmn', ':+tabmove<CR>', { desc = 'Move tab right' })
+    end,
   },
 }
