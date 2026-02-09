@@ -43,3 +43,5 @@ vim.diagnostic.config({
   severity_sort = true,
   float = false,         -- Disable floating diagnostics
 })
+
+vim.opt.termguicolors = true

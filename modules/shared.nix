@@ -34,7 +34,7 @@
 
   programs = {
     bat.enable = true;
-    exa.enable = true;
+    eza.enable = true;  # replaces deprecated exa
   };
 
   programs.zoxide.enable = true;

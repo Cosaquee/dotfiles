@@ -163,6 +163,15 @@ return {
       vim.keymap.set('n', '<leader>tp', ':tabp<CR>', { desc = 'Previous tab' })
       vim.keymap.set('n', '<leader>tmp', ':-tabmove<CR>', { desc = 'Move tab left' })
       vim.keymap.set('n', '<leader>tmn', ':+tabmove<CR>', { desc = 'Move tab right' })
+
+      -- Quick tab navigation with Tab key
+      vim.keymap.set('n', '<Tab>', ':tabn<CR>', { desc = 'Next tab' })
+      vim.keymap.set('n', '<S-Tab>', ':tabp<CR>', { desc = 'Previous tab' })
+
+      -- Direct tab access with <leader> + number
+      for i = 1, 9 do
+        vim.keymap.set('n', '<leader>' .. i, ':tabn ' .. i .. '<CR>', { desc = 'Go to tab ' .. i })
+      end
     end,
   },
 }

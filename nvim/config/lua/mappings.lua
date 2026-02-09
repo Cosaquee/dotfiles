@@ -45,3 +45,7 @@ keymap.set("n", "<leader>tn", ":tabn<CR>", { noremap = true })
 keymap.set("n", "<leader>tp", ":tabp<CR>", { noremap = true })
 keymap.set("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
 keymap.set("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
+
+-- Buffer navigation
+keymap.set("n", "<leader>[", ":bprevious<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
+keymap.set("n", "<leader>]", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })

@@ -1,4 +1,4 @@
-{ config, pkgs, nix-vscode-extensions, ... }:
+{ config, pkgs, ... }:
 
 let
   pythonWithBoto3 = pkgs.python311.withPackages (ps: with ps; [
@@ -24,6 +24,8 @@ in {
     claude-code
     chatgpt
     opencommit
+    fnm
+    ks
 
     # Cloud and DevOps tools
     aws-vault
@@ -45,6 +47,7 @@ in {
     aws-assume-role
     mkcert
 
+
     # Additional system utilities (beyond shared)
     sops
 
@@ -60,6 +63,8 @@ in {
     opam
     devenv
     proto
+
+    aerospace
 
     # Terminal and editor settings
     yaml-language-server
@@ -117,7 +122,7 @@ in {
       fi
 
       PATH=/Users/karolkozakowski/.local/bin:$PATH
-      TG_PROVIDER_CACHE=1
+      export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
@@ -131,4 +136,30 @@ in {
   programs.eza.enable = true;   # replaces deprecated exa
   programs.zoxide.enable = true;
   programs.lazygit.enable = true;
+
+  ############################
+  # CLAUDE CODE MCP SERVERS
+  ############################
+  programs.claude-code = {
+    enable = true;
+    mcps = {
+      # MCP servers will be configured here once available
+      # The mcps.nix project appears to be in development
+
+      # Enable Git MCP server for repository operations (currently unavailable)
+      # git.enable = true;
+
+      # Enable GitHub MCP server (requires authentication)
+      # github = {
+      #   enable = true;
+      #   toolsets = [ "full" ]; # Options: "full", "minimal", "search"
+      # };
+
+      # Enable Filesystem MCP server for file operations
+      # filesystem = {
+      #   enable = true;
+      #   allowedDirectories = [ "/Volumes/Code" ];
+      # };
+    };
+  };
 }
