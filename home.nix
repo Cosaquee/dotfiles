@@ -136,30 +136,4 @@ in {
   programs.eza.enable = true;   # replaces deprecated exa
   programs.zoxide.enable = true;
   programs.lazygit.enable = true;
-
-  ############################
-  # CLAUDE CODE MCP SERVERS
-  ############################
-  programs.claude-code = {
-    enable = true;
-    mcps = {
-      # MCP servers will be configured here once available
-      # The mcps.nix project appears to be in development
-
-      # Enable Git MCP server for repository operations (currently unavailable)
-      # git.enable = true;
-
-      # Enable GitHub MCP server (requires authentication)
-      # github = {
-      #   enable = true;
-      #   toolsets = [ "full" ]; # Options: "full", "minimal", "search"
-      # };
-
-      # Enable Filesystem MCP server for file operations
-      # filesystem = {
-      #   enable = true;
-      #   allowedDirectories = [ "/Volumes/Code" ];
-      # };
-    };
-  };
 }
