@@ -52,8 +52,9 @@
       ru = "cd $(git rev-parse --show-toplevel)";
       gc = "git checkout -";
       gp = "git pull";
-      update = "nix-channel --update && nix-env -u";
-      clean = "nix-collect-garbage";
+      update = "make -C ~/.config/home-manager update";
+      switch = "make -C ~/.config/home-manager switch";
+      clean = "make -C ~/.config/home-manager gc";
       pip = "pip3";
       homemanager = "cd && cd .config/home-manager";
     };
