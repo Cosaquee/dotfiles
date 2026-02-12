@@ -46,6 +46,7 @@ in {
     auth0-cli
     aws-assume-role
     mkcert
+    gh
 
 
     # Additional system utilities (beyond shared)
