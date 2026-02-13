@@ -26,7 +26,6 @@ in {
     opencommit
     fnm
     ks
-
     # Cloud and DevOps tools
     aws-vault
     awscli2
@@ -122,7 +121,7 @@ in {
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
 
-      PATH=/Users/karolkozakowski/.local/bin:$PATH
+      PATH=/opt/homebrew/bin:/Users/karolkozakowski/.local/bin:$PATH
       export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
 
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
