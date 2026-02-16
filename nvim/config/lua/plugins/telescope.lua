@@ -7,6 +7,7 @@ return {
       { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Live grep" },
       { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Help tags" },
       { "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>", desc = "Resume last search" },
+      { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "Buffers" },
     },
     cmd = "Telescope",
   },

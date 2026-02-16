@@ -142,6 +142,14 @@ return {
   },
 
   {
+    'tiagovla/scope.nvim',
+    event = 'VimEnter',
+    config = function()
+      require('scope').setup({})
+    end,
+  },
+
+  {
     'nanozuki/tabby.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
