@@ -17,8 +17,6 @@ with lib;
         nodejs
         # Language Servers
         # Bash
-        nodePackages.bash-language-server
-        # Lua
         lua-language-server
         nixpkgs-fmt
         statix
@@ -28,10 +26,6 @@ with lib;
         # Terraform
         terraform-ls
 
-        # Typescript
-        nodePackages.typescript-language-server
-        # Web (ESLint, HTML, CSS, JSON)
-        nodePackages.vscode-langservers-extracted
         # Telescope tools
         ripgrep
         fd
