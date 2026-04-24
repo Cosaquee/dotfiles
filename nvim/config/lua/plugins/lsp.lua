@@ -50,21 +50,6 @@ return {
   },
 
   {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local none_ls = require("none-ls")
-      none_ls.setup({
-        sources = {
-          none_ls.builtins.formatting.stylua,
-          none_ls.builtins.completion.spell,
-        },
-      })
-    end,
-  },
-
-  {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = "LspAttach",
     config = function()
