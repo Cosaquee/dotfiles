@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  pythonWithBoto3 = pkgs.python311.withPackages (ps: with ps; [
+  pythonWithBoto3 = pkgs.python312.withPackages (ps: with ps; [
     boto3
   ]);
 in {
@@ -17,7 +17,6 @@ in {
   home.packages = with pkgs; [
     # Development tools
     pythonWithBoto3
-    moon
     rustup
     openssl
     uv
@@ -26,6 +25,7 @@ in {
     opencommit
     fnm
     ks
+
     # Cloud and DevOps tools
     aws-vault
     awscli2
@@ -68,7 +68,6 @@ in {
 
     # Terminal and editor settings
     yaml-language-server
-    nodePackages.typescript
     nodejs_22
     yarn
     pnpm
