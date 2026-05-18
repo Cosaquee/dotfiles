@@ -49,3 +49,19 @@ keymap.set("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 -- Buffer navigation
 keymap.set("n", "<leader>[", ":bprevious<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
 keymap.set("n", "<leader>]", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+
+-- Project switching
+local function switch_project(path)
+  if vim.fn.isdirectory(path) == 0 then
+    vim.notify("Not found: " .. path, vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd.cd(path)
+  local ok, tree_api = pcall(require, "nvim-tree.api")
+  if ok then tree_api.tree.change_root(path) end
+  vim.notify("→ " .. vim.fn.fnamemodify(path, ":t"))
+end
+
+keymap.set("n", "<leader>ph", function() switch_project("/Volumes/Code/helios") end,   { desc = "Project: helios" })
+keymap.set("n", "<leader>pi", function() switch_project("/Volumes/Code/infraops") end, { desc = "Project: infraops" })
+keymap.set("n", "<leader>pg", function() switch_project("/Volumes/Code/gitops") end,   { desc = "Project: gitops" })

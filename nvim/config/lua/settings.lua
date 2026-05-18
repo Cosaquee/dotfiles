@@ -28,6 +28,9 @@ opt.splitbelow = true
 opt.splitright = true
 opt.splitkeep = "cursor"
 
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+
 -- Set leader key (must be set before lazy.nvim loads)
 g.mapleader = ' '
 g.maplocalleader = ' '

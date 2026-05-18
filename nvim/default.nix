@@ -7,6 +7,8 @@ with lib;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+      withRuby = false;
+      withPython3 = false;
 
       # Plugins are now managed by lazy.nvim (see lua/plugins/)
       plugins = [ ];

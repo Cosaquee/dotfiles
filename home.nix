@@ -63,6 +63,7 @@ in {
     opam
     devenv
     proto
+    stats
 
     aerospace
 

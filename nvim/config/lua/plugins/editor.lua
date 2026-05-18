@@ -2,6 +2,14 @@ return {
   { "tpope/vim-sensible", lazy = false },
 
   {
+    "monkoose/matchparen.nvim",
+    event = "BufReadPost",
+    config = function()
+      require("matchparen").setup()
+    end,
+  },
+
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()

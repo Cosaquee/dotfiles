@@ -10,14 +10,20 @@ return {
       require("toggleterm").setup()
 
       local Terminal = require("toggleterm.terminal").Terminal
-      local float_term = Terminal:new({ direction = "float", hidden = true })
+      local float_term, float_term_cwd = nil, nil
+
+      local function get_float_term()
+        local cwd = vim.fn.getcwd()
+        if not float_term or float_term_cwd ~= cwd then
+          if float_term then pcall(function() float_term:shutdown() end) end
+          float_term = Terminal:new({ direction = "float", hidden = true, dir = cwd })
+          float_term_cwd = cwd
+        end
+        return float_term
+      end
 
       vim.keymap.set({ "n", "t" }, "<C-Enter>", function()
-        if float_term then
-          float_term:toggle()
-        else
-          vim.notify("float_term is not defined", vim.log.levels.ERROR)
-        end
+        get_float_term():toggle()
       end, { desc = "Toggle float terminal" })
 
       vim.keymap.set({ "n", "t" }, "<C-S-Enter>", function()
