@@ -10,6 +10,7 @@ opt.hlsearch = true
 opt.showcmd = true
 opt.cmdheight = 1
 opt.laststatus = 3
+opt.showtabline = 2
 
 opt.autoindent = true
 opt.smartindent = true

@@ -25,6 +25,7 @@ in {
     opencommit
     fnm
     ks
+    bun
 
     # Cloud and DevOps tools
     aws-vault
@@ -50,6 +51,7 @@ in {
 
     # Additional system utilities (beyond shared)
     sops
+    glow
 
     # Productivity and communication
     hledger

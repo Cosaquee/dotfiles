@@ -65,3 +65,16 @@ end
 keymap.set("n", "<leader>ph", function() switch_project("/Volumes/Code/helios") end,   { desc = "Project: helios" })
 keymap.set("n", "<leader>pi", function() switch_project("/Volumes/Code/infraops") end, { desc = "Project: infraops" })
 keymap.set("n", "<leader>pg", function() switch_project("/Volumes/Code/gitops") end,   { desc = "Project: gitops" })
+
+-- Open journal at today's entry
+keymap.set("n", "<leader>j", function()
+  local path = vim.fn.expand("~/journal/journal-raw.md")
+  vim.cmd("edit " .. path)
+  local today = "# " .. os.date("%Y-%m-%d, %A")
+  local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1] or ""
+  if first_line ~= today then
+    vim.api.nvim_buf_set_lines(0, 0, 0, false, { today, "", "", "" })
+  end
+  vim.api.nvim_win_set_cursor(0, { 3, 0 })
+  vim.cmd("startinsert")
+end, { desc = "Open journal at today" })

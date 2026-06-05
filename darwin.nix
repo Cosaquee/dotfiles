@@ -15,10 +15,12 @@
 
     taps = [
       "withgraphite/tap"
+      "asheshgoplani/tap"
     ];
 
     brews = [
       "withgraphite/tap/graphite"
+      "asheshgoplani/tap/agent-deck"
     ];
 
     casks = [

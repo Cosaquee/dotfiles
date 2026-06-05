@@ -168,6 +168,16 @@ return {
   },
 
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    ft = { 'markdown', 'norg', 'rmd', 'org', 'codecompanion' },
+    cmd = { 'RenderMarkdown' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+
+  {
     'nanozuki/tabby.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
@@ -175,7 +185,49 @@ return {
     event = 'VimEnter',
     config = function()
       require('tabby').setup({
-        preset = 'active_wins_at_tail',
+        line = function(line)
+          local function buf_name(buf)
+            local name = vim.api.nvim_buf_get_name(buf)
+            if name == '' then return '[No Name]' end
+            return vim.fn.fnamemodify(name, ':t')
+          end
+
+          return {
+            {
+              line.tabs().foreach(function(tab)
+                local hl = tab.is_current() and 'TabLineSel' or 'TabLine'
+                return {
+                  line.sep('', hl, 'TabLineFill'),
+                  tab.number(),
+                  tab.name(),
+                  tab.close_btn(''),
+                  line.sep('', hl, 'TabLineFill'),
+                  hl = hl,
+                  margin = ' ',
+                }
+              end),
+            },
+            line.spacer(),
+            (function()
+              local result = {}
+              local current = vim.api.nvim_get_current_buf()
+              for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                if vim.fn.buflisted(buf) == 1 then
+                  local hl = buf == current and 'TabLineSel' or 'TabLine'
+                  table.insert(result, {
+                    line.sep('', hl, 'TabLineFill'),
+                    ' ' .. buf_name(buf) .. ' ',
+                    line.sep('', hl, 'TabLineFill'),
+                    hl = hl,
+                    margin = ' ',
+                  })
+                end
+              end
+              return result
+            end)(),
+            hl = 'TabLineFill',
+          }
+        end,
         option = {
           nerdfont = true,
           lualine_theme = nil,
