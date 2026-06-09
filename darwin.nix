@@ -11,6 +11,8 @@
       cleanup = "zap"; # remove unlisted packages
       autoUpdate = true;
       upgrade = true;
+      # Homebrew 5.x requires an explicit confirmation flag for `brew bundle --cleanup`.
+      extraFlags = [ "--force-cleanup" ];
     };
 
     taps = [
